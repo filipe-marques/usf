@@ -132,6 +132,8 @@ def main():
         generate_gpg_key()
     elif choice == "9":
         configure_git()
+    elif choice == "10":
+        check_sums()
     elif choice == "0":
         print("Exiting... !")
         sys.exit()

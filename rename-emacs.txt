@@ -1,0 +1,154 @@
+;; To use this file rename it to .emacs and put it in your user_folder folder:
+;;     home/user_folder
+;; in your Linux operating system.
+;;
+;; To upgrade packages do:
+;; 1 - edit the .emacs file and uncomment these lines (I use Melpa):
+;; (require 'package)
+;; (package-initialize)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;
+;; 2 - restart GNU EMACS and type in the minibuffer:
+;; 3 - M-x list-packages
+;; 4 - Locate your installed packages
+;;         (the builtin packages that come GNU EMACS are tagged with built-in
+;;             and the others that you install from Melpa are tagged with installed)
+;; 5 - Point the cursor to the first package 'installed' and type: U (SHIFT + u)
+;; 6 - All 'installed' packages will be marked with the D character and then type x and
+;;         then in the question of installing the new packages type yes
+;;         and wait for it to finish.
+;; 7 - After finished of installing the new packages,
+;;         type yes to the question of deleting the old packages.
+;;
+;; When upgrading installed packages, substitute the old paths for the new paths in the .emacs file:
+;; Example:
+;;
+;; old path:
+;;     home/user_folder/.emacs.d/elpa/yasnippet-0.8.0
+;;
+;; new path:
+;;     home/user_folder/.emacs.d/elpa/yasnippet-20150415.244
+;;
+;; Do that in your packages tagged with 'installed'
+;; Restart GNU EMACS.
+
+;; (require 'package)
+;; (package-initialize)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(c-insert-tab-function (quote insert-tab))
+ '(c-syntactic-indentation nil)
+ '(cua-global-mark-cursor-color "DeepSkyBlue1")
+ '(cua-mode t nil (cua-base))
+ '(current-language-environment "UTF-8")
+ '(indent-tabs-mode nil)
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(keyboard-coding-system (quote utf-8-unix))
+ '(minimap-always-recenter t)
+ '(minimap-hide-scroll-bar t)
+ '(minimap-major-modes (quote (web-mode prog-mode)))
+ '(minimap-minimum-width 12)
+ '(minimap-mode nil)
+ '(minimap-window-location (quote right))
+ '(show-paren-mode t)
+ '(tab-width 4)
+ '(tool-bar-mode nil)
+ '(truncate-lines t)
+ '(web-mode-enable-auto-indentation nil)
+ '(web-mode-script-padding 0)
+ '(web-mode-style-padding 0))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Monospace" :foundry "unknown" :slant normal :weight normal :height 120 :width normal))))
+ '(font-lock-comment-face ((t (:foreground "dim gray"))))
+ '(region ((t (:background "light sky blue" :distant-foreground "black"))))
+ '(web-mode-block-attr-name-face ((t (:foreground "black"))))
+ '(web-mode-block-attr-value-face ((t (:foreground "dark green"))))
+ '(web-mode-block-delimiter-face ((t (:foreground "dark green" :weight bold))))
+ '(web-mode-builtin-face ((t (:inherit font-lock-builtin-face))))
+ '(web-mode-doctype-face ((t (:foreground "dark green"))))
+ '(web-mode-function-call-face ((t (:foreground "blue"))))
+ '(web-mode-function-name-face ((t (:foreground "blue"))))
+ '(web-mode-html-attr-custom-face ((t (:foreground "blue"))))
+ '(web-mode-html-attr-engine-face ((t (:foreground "dark red"))))
+ '(web-mode-html-attr-equal-face ((t (:foreground "blue"))))
+ '(web-mode-html-attr-name-face ((t (:foreground "blue"))))
+ '(web-mode-html-attr-value-face ((t (:foreground "dark green"))))
+ '(web-mode-html-tag-bracket-face ((t (:foreground "Grey14" :weight bold))))
+ '(web-mode-html-tag-custom-face ((t (:inherit web-mode-html-tag-face :foreground "black"))))
+ '(web-mode-html-tag-face ((t (:foreground "black" :weight bold))))
+ '(web-mode-json-key-face ((t (:foreground "dark slate gray"))))
+ '(web-mode-keyword-face ((t (:weight bold))))
+ '(web-mode-param-name-face ((t (:foreground "black"))))
+ '(web-mode-preprocessor-face ((t (:foreground "dark green"))))
+ '(web-mode-string-face ((t (:foreground "red4"))))
+ '(web-mode-symbol-face ((t (:foreground "blue"))))
+ '(web-mode-variable-name-face ((t (:foreground "blue")))))
+
+;; (add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20150218.819")
+;; (require 'auto-complete)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (global-auto-complete-mode t)
+
+;; (require 'auto-complete)
+;; (global-auto-complete-mode t)
+
+;; disable auto-save and auto-backup
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+
+(setq default-indent-tabs-mode nil)
+;;(setq default-tab-width 4)
+;;(setq c-basic-offset 4)
+;;(setq default-indented-text-mode 'awk)
+
+(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'text-mode-hook 'linum-mode)
+
+;; php-mode
+(setq php-template-compatibility nil)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/company-0.8.11")
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(global-company-mode 1)
+
+(require 'ido)
+(ido-mode t)
+
+;; has helm by default, if not uncomment this !
+;;(add-to-list 'load-path "~/.emacs.d/elpa/helm-20150220.525")
+;;(require 'helm-config)
+;;(helm-mode t)
+
+;;(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+;;(setq c-default-style "awk")
+
+(add-to-list 'load-path "~/.emacs.d/elpa/web-mode-20150219.801")
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(setq web-mode-enable-auto-pairing t)
+;;(setq web-mode-enable-css-colorization t)
+;;(setq web-mode-enable-block-face t)
+
+;;(add-to-list 'load-path "~/.emacs.d/elpa/minimap-1.2")
+;;(require 'minimap)
+;;(interactive)
+;;(minimap-mode t)
+
